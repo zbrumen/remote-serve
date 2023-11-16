@@ -18,8 +18,9 @@ func main() {
 		}
 		auths[cache[0]] = cache[1]
 	}
-	_, err := net.NewServer(*port, auths)
+	srvr, err := net.NewServer(*port, auths)
 	if err != nil {
 		panic(err)
 	}
+	<-srvr.Done()
 }
